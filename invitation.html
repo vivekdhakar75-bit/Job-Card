@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Invitation</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #ff5733;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    .event-details {
+      text-align: center;
+      margin: 30px 0;
+      font-size: 1.1rem;
+    }
+
+    .event-details p {
+      margin: 10px 0;
+    }
+
+    .banner {
+      text-align: center;
+    }
+
+    .banner img {
+      max-width: 90%;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .description {
+      max-width: 700px;
+      margin: 40px auto;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .countdown {
+      text-align: center;
+      margin: 40px 0;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff5733;
+    }
+
+    .rsvp {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .rsvp form {
+      display: inline-block;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .rsvp input, .rsvp button {
+      padding: 10px;
+      margin: 10px 0;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .rsvp button {
+      background: #ff5733;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .rsvp button:hover {
+      background: #e74c3c;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #ff5733;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .rsvp input, .rsvp button {
+        width: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎉 Birthday Bash 2025 🎉</h1>
+    <p>Hosted by: Vivek Dhakar</p>
+  </header>
+
+  <section class="event-details">
+    <p><b>Date:</b> 15th September 2025</p>
+    <p><b>Time:</b> 7:00 PM onwards</p>
+    <p><b>Venue:</b> The Royal Banquet Hall, Jaipur</p>
+  </section>
+
+  <section class="banner">
+  <img src="https://images.pexels.com/photos/3171837/pexels-photo-3171837.jpeg" alt="Event Banner">
+</section>
+
+
+  <section class="description">
+    <p>Join us for an unforgettable evening filled with fun, laughter, music, and memories as we celebrate together. Don’t miss out on this exciting event!</p>
+  </section>
+
+  <!-- Countdown Timer -->
+  <section class="countdown" id="countdown">
+    Countdown: Loading...
+  </section>
+
+  <!-- RSVP Form -->
+  <section class="rsvp">
+    <form>
+      <h2>RSVP Now</h2>
+      <input type="text" placeholder="Your Name" required><br>
+      <input type="email" placeholder="Your Email" required><br>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Birthday Bash | All Rights Reserved</p>
+  </footer>
+
+  <!-- JavaScript Countdown -->
+  <script>
+    const eventDate = new Date("Sep 15, 2025 19:00:00").getTime();
+    const timer = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML =
+        `Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+      if (distance < 0) {
+        clearInterval(timer);
+        document.getElementById("countdown").innerHTML = "Event Started!";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
